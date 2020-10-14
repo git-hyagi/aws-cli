@@ -1,11 +1,11 @@
 ## About
-Very simple program to start, stop or print the state of some instances running on aws.
-The flags "name" and "owner" are used as filters when making the ec2 actions (poweron/poweroff/state).  
+Very simple program to start, stop or print the state of some instances running on aws.  
+The flags `name` and `owner` are used as filters when making the ec2 actions (`poweron`|`poweroff`|`state`).  
    
-For this program to run properly it is necessary to have the aws credentials stored in your home directory ($HOME/.aws/credentials).  
+For this program to run properly it is necessary to have the aws credentials stored in your home directory (`$HOME/.aws/credentials`).  
 More information about aws credentials: https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html  
 
-Here is an example of ~/.aws/credentials file:
+Here is an example of `~/.aws/credentials` file:
 ~~~
 [default]
 aws_access_key_id = 123456...
