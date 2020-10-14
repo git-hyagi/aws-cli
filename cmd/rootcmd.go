@@ -25,9 +25,12 @@ func Execute() {
 
 func init() {
 
-	rootCmd.PersistentFlags().StringP("name", "n", "", "Instance name (required), for example: hyagi-*")
-	rootCmd.PersistentFlags().StringP("owner", "o", "504887044062", "AWS Account Owner")
-	rootCmd.MarkPersistentFlagRequired("name")
+	rootCmd.PersistentFlags().StringP("name", "n", "", "Instance name (required if INSTANCE_NAME env var not defined), for example: hyagi-*")
+	rootCmd.PersistentFlags().StringP("owner", "o", "504887044062", "AWS Account Owner (can be suppressed if INSTANCE_OWNER env var is defined)")
+
+	if os.Getenv("INSTANCE_NAME") == "" {
+		rootCmd.MarkPersistentFlagRequired("name")
+	}
 
 	rootCmd.AddCommand(state())
 	rootCmd.AddCommand(powerOn())

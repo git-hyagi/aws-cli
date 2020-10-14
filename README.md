@@ -44,6 +44,13 @@ aws-test poweron -n <instance name> -o <owner>
 aws-test state -n <instance name> -o <owner>
 ~~~
 
+* it is also possible to configure env vars instead of passing the owner and/or the instance name(s) through parameter(s):
+~~~
+export INSTANCE_NAME="yagi-*"
+export INSTANCE_OWNER=1234
+aws-test state
+~~~
+
 
 ## Pre-reqs
 

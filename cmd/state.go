@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/aws/aws-sdk-go/service/ec2"
 	"github.com/spf13/cobra"
+	"os"
 	"sync"
 )
 
@@ -13,8 +14,19 @@ func state() *cobra.Command {
 		Short: "Retrieve the state of the instances",
 		RunE: func(cmd *cobra.Command, args []string) error {
 
-			inst_name, _ := rootCmd.Flags().GetString("name")
-			inst_owner, _ := rootCmd.Flags().GetString("owner")
+			var inst_name, inst_owner string
+			if os.Getenv("INSTANCE_NAME") != "" {
+				inst_name = os.Getenv("INSTANCE_NAME")
+			} else {
+				inst_name, _ = rootCmd.Flags().GetString("name")
+			}
+
+			if os.Getenv("INSTANCE_OWNER") != "" {
+				inst_owner = os.Getenv("INSTANCE_OWNER")
+			} else {
+				inst_owner, _ = rootCmd.Flags().GetString("owner")
+			}
+
 			svc, result := getInstances(inst_name, inst_owner)
 
 			// create a waitGroup to control the go routines execution
