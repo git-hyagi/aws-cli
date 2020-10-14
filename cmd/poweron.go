@@ -17,8 +17,6 @@ func powerOn() *cobra.Command {
 			inst_name, _ := rootCmd.Flags().GetString("name")
 			inst_owner, _ := rootCmd.Flags().GetString("owner")
 			svc, result := getInstances(inst_name, inst_owner)
-			fmt.Println(inst_name)
-			fmt.Println(inst_owner)
 
 			// create a waitGroup to control the go routines execution
 			wg := sync.WaitGroup{}
