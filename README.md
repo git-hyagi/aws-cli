@@ -66,10 +66,9 @@ Configure the env vars:
 cat<<EOF>> ~/.bash_profile
 
 # Go specific environment vars
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin
 export GOPATH=$HOME/go
-export GOBIN=$(go env GOPATH)/bin
-export PATH=$PATH:$(go env GOPATH)/bin
+export GOBIN=$HOME/go/bin
 EOF
 
 source ~/.bash_profile
